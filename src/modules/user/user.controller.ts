@@ -25,19 +25,9 @@ export class UserController {
   @Post('register')
   async create(@Req() req: any, @Body() createUserDto: CreateUserDto) {
     const user = await this.usersService.create(createUserDto);
-    console.log(user);
-
-    await new Promise((resolve, reject) => {
-      req.login(user, (err) => {
-        if (err) {
-          throw new BadRequestException(err);
-        } else {
-          resolve(user);
-        }
-      });
-    });
 
     return {
+      email: user.email,
       msg: 'User successfully registered',
     };
   }
