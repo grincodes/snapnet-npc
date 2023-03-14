@@ -9,4 +9,9 @@ export class StatesService {
     const res = await this.stateRepo.create(createStateDto);
     return res;
   }
+
+  async findAll(page?: number, size?: number) {
+    const res = await this.stateRepo.paginate(page, size);
+    return res;
+  }
 }

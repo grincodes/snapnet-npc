@@ -9,4 +9,9 @@ export class LgaService {
     const res = await this.stateRepo.create(createLgaDto);
     return res;
   }
+
+  async findAll(page?: number, size?: number) {
+    const res = await this.stateRepo.paginate(page, size);
+    return res;
+  }
 }

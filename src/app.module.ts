@@ -7,6 +7,10 @@ import { AuthModule } from './modules/authentication/auth.module';
 import config from './config/config';
 import { validate } from './config/custom-validation/env.validation';
 import { UserModule } from './modules/user/user.module';
+import { StatesModule } from './modules/states/states.module';
+import { CitizenModule } from './modules/citizen/citizen.module';
+import { WardModule } from './modules/ward/ward.module';
+import { LgaModule } from './modules/lga/lga.module';
 
 @Module({
   imports: [
@@ -27,6 +31,10 @@ import { UserModule } from './modules/user/user.module';
     }),
     AuthModule,
     UserModule,
+    StatesModule,
+    CitizenModule,
+    WardModule,
+    LgaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
