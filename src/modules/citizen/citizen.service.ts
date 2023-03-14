@@ -7,6 +7,7 @@ export class CitizenService {
   constructor(private readonly citizenRepo: CitizenRepository) {}
 
   async createCitizen(createCitizenDto: CreateCitizenDto) {
+    createCitizenDto.timestamp = Math.floor(Date.now() / 1000);
     return this.citizenRepo.create(createCitizenDto);
   }
 

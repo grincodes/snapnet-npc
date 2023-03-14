@@ -11,6 +11,7 @@ import { StatesModule } from './modules/states/states.module';
 import { CitizenModule } from './modules/citizen/citizen.module';
 import { WardModule } from './modules/ward/ward.module';
 import { LgaModule } from './modules/lga/lga.module';
+import * as session from 'express-session';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { LgaModule } from './modules/lga/lga.module';
       validate,
       isGlobal: true,
     }),
+
     SequelizeModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({

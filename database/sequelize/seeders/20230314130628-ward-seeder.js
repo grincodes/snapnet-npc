@@ -3,51 +3,64 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const CREATE_UPDATE_TIMESTAMP = {
+      createdAt: '2023-03-06 03:06:53',
+      updatedAt: '2023-03-06 03:06:53',
+    };
+    const timestamp = 50000;
     await queryInterface.bulkInsert(
       'Wards',
       [
         {
           name: 'LagosWard',
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
           lgaId: 1,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         {
           name: 'OgunWard',
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
           lgaId: 2,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
 
         {
           name: 'OsunWard',
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
           lgaId: 3,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         {
           name: 'RiversWard',
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
           lgaId: 4,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
 
         {
           name: 'LagosWard',
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
           lgaId: 5,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         {
           name: 'OyoWard',
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
           lgaId: 6,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
 
         {
           name: 'AbiaWard',
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
           lgaId: 7,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         {
           name: 'EkitiWard',
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
           lgaId: 8,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         // add more data here
       ],

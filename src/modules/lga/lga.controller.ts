@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../authentication/jwt-auth.guard';
 import { CreateLgaDto } from './dto/create-lga.dto';
@@ -11,7 +11,7 @@ export class LgaController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async createLga(createLgaDto: CreateLgaDto) {
+  async createLga(@Body() createLgaDto: CreateLgaDto) {
     return this.lgaService.createLga(createLgaDto);
   }
 

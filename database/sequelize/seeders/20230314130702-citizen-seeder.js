@@ -3,6 +3,11 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const CREATE_UPDATE_TIMESTAMP = {
+      createdAt: '2023-03-06 03:06:53',
+      updatedAt: '2023-03-06 03:06:53',
+    };
+    const timestamp = 50000;
     await queryInterface.bulkInsert(
       'Citizens',
       [
@@ -12,7 +17,8 @@ module.exports = {
           gender: 'male',
           phone: '+2349090604823',
           wardId: 1,
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         {
           fullname: 'Ogun',
@@ -20,7 +26,8 @@ module.exports = {
           gender: 'male',
           phone: '+2349090604823',
           wardId: 2,
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
 
         {
@@ -29,7 +36,8 @@ module.exports = {
           gender: 'male',
           phone: '+2349090604823',
           wardId: 1,
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         {
           fullname: 'Rivers',
@@ -37,7 +45,8 @@ module.exports = {
           gender: 'male',
           phone: '+2349090604823',
           wardId: 2,
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
 
         {
@@ -46,7 +55,8 @@ module.exports = {
           gender: 'male',
           phone: '+2349090604823',
           wardId: 1,
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         {
           fullname: 'Oyo',
@@ -54,7 +64,8 @@ module.exports = {
           gender: 'male',
           phone: '+2349090604823',
           wardId: 3,
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
 
         {
@@ -63,7 +74,8 @@ module.exports = {
           gender: 'male',
           phone: '+2349090604823',
           wardId: 4,
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         {
           fullname: 'Ekiti',
@@ -71,7 +83,8 @@ module.exports = {
           gender: 'male',
           phone: '+2349090604823',
           wardId: 5,
-          timestamp: Math.floor(Date.now / 1000),
+          timestamp,
+          ...CREATE_UPDATE_TIMESTAMP,
         },
         // add more data here
       ],

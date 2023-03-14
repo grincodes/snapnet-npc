@@ -23,6 +23,8 @@ export class UserService {
 
     try {
       createUserDto.timestamp = Math.floor(Date.now() / 1000);
+
+      createUserDto.password = Password.hashPassword(createUserDto.password);
       await this.usersRepository.create(createUserDto);
 
       const { password, ...user } = createUserDto;
@@ -61,19 +63,23 @@ export class UserService {
 
   async setCurrentRefreshToken(refreshToken: string, userId: number) {
     const currentHashedRefreshToken = await bcrypt.hash(refreshToken, 10);
-    await this.usersRepository.update(
+    console.log('hashed');
+
+    return await this.usersRepository.update(
       { currentHashedRefreshToken },
       { id: userId },
     );
   }
 
   async removeRefreshToken(userId: number) {
-    return this.usersRepository.update(
+    const res = await this.usersRepository.update(
       {
         currentHashedRefreshToken: null,
       },
       { id: userId },
     );
+
+    return res;
   }
   async getUserIfRefreshTokenMatches(refreshToken: string, userId: number) {
     const user = await this.findOne(userId);

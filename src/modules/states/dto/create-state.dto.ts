@@ -5,5 +5,5 @@ export class CreateStateDto {
   @ApiProperty()
   @IsString()
   name: string;
-  timestamp = Math.floor(Date.now() / 1000);
+  timestamp: number;
 }

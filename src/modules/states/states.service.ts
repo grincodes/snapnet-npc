@@ -6,6 +6,7 @@ import { StateRepository } from './state.repo';
 export class StatesService {
   constructor(private readonly stateRepo: StateRepository) {}
   async createState(createStateDto: CreateStateDto) {
+    createStateDto.timestamp = Math.floor(Date.now() / 1000);
     const res = await this.stateRepo.create(createStateDto);
     return res;
   }

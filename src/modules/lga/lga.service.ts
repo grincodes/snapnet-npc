@@ -6,6 +6,7 @@ import { LgaRepository } from './lga.repo';
 export class LgaService {
   constructor(private readonly stateRepo: LgaRepository) {}
   async createLga(createLgaDto: CreateLgaDto) {
+    createLgaDto.timestamp = Math.floor(Date.now() / 1000);
     const res = await this.stateRepo.create(createLgaDto);
     return res;
   }

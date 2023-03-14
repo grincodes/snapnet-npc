@@ -11,17 +11,6 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
-  async login(user: any) {
-    const payload = {
-      email: user.email,
-      userId: user.id,
-      sub: user.id,
-    };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
-  }
-
   public getCookiesForLogOut() {
     return [
       'Authentication=; HttpOnly; Path=/; Max-Age=0',
@@ -32,9 +21,7 @@ export class AuthService {
     const payload: any = { userId };
     const token = this.jwtService.sign(payload, {
       secret: this.configService.get('JWT_ACCESS_TOKEN_SECRET'),
-      expiresIn: `${this.configService.get(
-        'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
-      )}s`,
+      expiresIn: '20h',
     });
     return `Authentication=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
       'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
@@ -45,9 +32,7 @@ export class AuthService {
     const payload: any = { userId };
     const token = this.jwtService.sign(payload, {
       secret: this.configService.get('JWT_REFRESH_TOKEN_SECRET'),
-      expiresIn: `${this.configService.get(
-        'JWT_REFRESH_TOKEN_EXPIRATION_TIME',
-      )}s`,
+      expiresIn: '1d',
     });
     const cookie = `Refresh=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
       'JWT_REFRESH_TOKEN_EXPIRATION_TIME',

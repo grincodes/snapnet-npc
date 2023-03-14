@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../authentication/jwt-auth.guard';
 import { CitizenService } from './citizen.service';
@@ -11,7 +11,7 @@ export class CitizenController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async createCitizen(createCitizenDto: CreateCitizenDto) {
+  async createCitizen(@Body() createCitizenDto: CreateCitizenDto) {
     const res = await this.citizenService.createCitizen(createCitizenDto);
     return res;
   }

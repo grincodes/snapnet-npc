@@ -22,5 +22,5 @@ export class CreateCitizenDto {
   @IsNumberString()
   wardId: number;
 
-  timestamp = Math.floor(Date.now() / 1000);
+  timestamp: number;
 }

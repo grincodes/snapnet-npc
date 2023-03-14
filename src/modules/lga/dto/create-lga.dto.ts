@@ -10,5 +10,5 @@ export class CreateLgaDto {
   @IsNumberString()
   stateId: string;
 
-  timestamp = Math.floor(Date.now() / 1000);
+  timestamp: number;
 }

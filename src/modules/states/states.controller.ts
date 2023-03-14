@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../authentication/jwt-auth.guard';
 import { CreateStateDto } from './dto/create-state.dto';
 import { StatesService } from './states.service';
@@ -8,7 +8,7 @@ export class StatesController {
   constructor(private readonly stateService: StatesService) {}
   @UseGuards(JwtAuthGuard)
   @Post()
-  async createState(createStateDto: CreateStateDto) {
+  async createState(@Body() createStateDto: CreateStateDto) {
     return this.stateService.createState(createStateDto);
   }
 

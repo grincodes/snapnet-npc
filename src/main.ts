@@ -7,13 +7,16 @@ import {
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
 import { ConfigService } from '@nestjs/config';
-
+import * as session from 'express-session';
 import {
   ValidationPipe,
   VersioningType,
   VERSION_NEUTRAL,
 } from '@nestjs/common';
 import helmet from 'helmet';
+import * as passport from 'passport';
+
+import * as cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -48,6 +51,8 @@ async function bootstrap() {
   app.use(helmet.noSniff());
   app.use(helmet.hidePoweredBy());
   app.use(helmet.contentSecurityPolicy());
+
+  app.use(cookieParser());
 
   await app.listen(port);
 }
