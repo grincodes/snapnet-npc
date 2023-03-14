@@ -1,0 +1,17 @@
+
+# Get Started
+
+ You only nedd to run this once
+
+  - npm run db:create:dev 
+  - npm run db:seeder
+
+# Start App
+ npm run start:dev
+
+# Endpoint
+
+SwaggerDoc : http://localhost:3000/api/v1/
+
+
+  
