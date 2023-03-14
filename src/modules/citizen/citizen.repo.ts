@@ -4,7 +4,7 @@ import { EntityRepository } from 'src/infra/entity.repository';
 import { Citizen } from './schema/citizen.entity';
 
 @Injectable()
-export class UsersRepository extends EntityRepository<Citizen> {
+export class CitizenRepository extends EntityRepository<Citizen> {
   constructor(@InjectModel(Citizen) private citizenModel: typeof Citizen) {
     super(citizenModel);
   }

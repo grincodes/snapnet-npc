@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "db:seeder" :   "npx sequelize-cli db:seed:all",
     "db:create:dev": "cross-env NODE_ENV=development node scripts/db/create",
     "db:create:stg": "cross-env NODE_ENV=staging node scripts/db/create",
     "db:create:prod": "cross-env NODE_ENV=production node scripts/db/create",
