@@ -1,8 +1,10 @@
 import { Controller, Get, Render, Req, Res, UseGuards } from '@nestjs/common';
+import { ApiExcludeController } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { JwtAuthGuard } from './modules/authentication/jwt-auth.guard';
 import { JwtAuthGuardView } from './views/guards/auth.guard';
 
+@ApiExcludeController()
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
