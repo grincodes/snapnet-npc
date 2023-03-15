@@ -50,6 +50,40 @@ export class AuthController {
     return { user: req.user, msg: 'User logged in', status: 'success' };
   }
 
+  @Post('handleViewLogin')
+  async handleViewLogin(
+    @Req() req: RequestWithUser,
+    @Res() res,
+    @Body() loginDto: LoginDto,
+  ) {
+    const user = await this.usersService.validateUser(
+      loginDto.email,
+      loginDto.password,
+    );
+    if (!user) {
+      res.render('login', { title: 'Login', error: 'invalid credentials' });
+    } else {
+      const accessTokenCookie = this.authService.getCookieWithJwtAccessToken(
+        user.id,
+      );
+      const refreshTokenCookie = this.authService.getCookieWithJwtRefreshToken(
+        user.id,
+      );
+
+      await this.usersService.setCurrentRefreshToken(
+        refreshTokenCookie.token,
+        user.id,
+      );
+
+      req.res.setHeader('Set-Cookie', [
+        accessTokenCookie,
+        refreshTokenCookie.cookie,
+      ]);
+
+      res.redirect('/');
+    }
+  }
+
   @UseGuards(JwtRefreshGuard)
   @Get('refresh')
   refresh(@Req() request: RequestWithUser) {

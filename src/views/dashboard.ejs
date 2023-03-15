@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <% if (username) { %>
+      <h1>Welcome <%= username %>!</h1>
+      <p>This is your dashboard.</p>
+    <% } else { %>
+      <script>
+        alert('You must be logged in to view the dashboard.');
+        window.location.href = '/login';
+      </script>
+    <% } %>
+  </body>
+</html>

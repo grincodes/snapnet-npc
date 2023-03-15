@@ -17,11 +17,24 @@ import helmet from 'helmet';
 import * as passport from 'passport';
 
 import * as cookieParser from 'cookie-parser';
+import {
+  ExpressAdapter,
+  NestExpressApplication,
+} from '@nestjs/platform-express';
+import * as express from 'express';
+import * as expressLayouts from 'express-ejs-layouts';
+import { join } from 'path';
 
 dotenv.config();
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  // ejs
+
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+  app.useStaticAssets(join('./src/', 'public'));
+  app.setBaseViewsDir(join('./src', 'views'));
+  app.setViewEngine('ejs');
 
   const config = new DocumentBuilder()
     .addBearerAuth({ type: 'http' }, 'access-token')
